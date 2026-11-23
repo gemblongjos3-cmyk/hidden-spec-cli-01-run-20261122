@@ -403,7 +403,6 @@ function sectionEdit(sec: Section): Edit {
 // SEARCH/REPLACE blocks (section 7)
 
 function parseSearchReplace(lines: string[]): Edit[] {
-  return [];
   const edits: Edit[] = [];
   const n = lines.length;
   let i = 0;
@@ -495,7 +494,6 @@ const vSectionStart = (l: string): boolean =>
 const vBodyLine = (l: string): boolean => l === '' || l[0] === ' ' || l[0] === '-' || l[0] === '+';
 
 function parseV4A(lines: string[]): Edit[] {
-  return [];
   const n = lines.length;
   let first = -1;
   for (let i = 0; i < n; i++)
