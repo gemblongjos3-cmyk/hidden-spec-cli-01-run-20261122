@@ -123,7 +123,7 @@ function matchesAt(fileLines: string[], O: string[], i: number, tier: number): b
 }
 
 function findTier(fileLines: string[], O: string[], strict: boolean): { tier: number; occ: number[] } | null {
-  const maxTier = 0;
+  const maxTier = strict ? 0 : 2;
   for (let tier = 0; tier <= maxTier; tier++) {
     const occ: number[] = [];
     for (let i = 0; i + O.length <= fileLines.length; i++) if (matchesAt(fileLines, O, i, tier)) occ.push(i);
@@ -647,7 +647,7 @@ function vUpdateEdit(path: string, moveTo: string | null, chunks: VChunk[]): Edi
     if (cur === null) throw new Fail('missing', path);
     if (moveTo !== null && tree.get(moveTo) !== null) throw new Fail('exists', moveTo);
     const doc = parseDoc(cur);
-    const maxTier = 0;
+    const maxTier = ctx.strict ? 0 : 2;
     let lines = doc.lines.slice();
     let cursor = 0;
     for (const c of chunks) {
